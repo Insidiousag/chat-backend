@@ -51,9 +51,7 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
 
-const WHITELIST = process.env.FRONTEND_ORIGINS
-  .split(",")
-  .map((url) => url.trim());
+const WHITELIST = process.env.FRONTEND_ORIGINS.split(",").map((url) => url.trim());
 
 dotenv.config();
 
