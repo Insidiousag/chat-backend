@@ -9,7 +9,7 @@ export const generateToken = (userId, res) => {
   res.cookie("jwt", token, {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     httpOnly: true,
-    sameSite: "lax",              // <- loosen for cross-site GET/POST
+    sameSite: "none",              // <- loosen for cross-site GET/POST
     secure: process.env.NODE_ENV !== "development",
     // domain: process.env.COOKIE_DOMAIN, // optionally pin to your API domain
     // path: "/",                        // the default is "/" so usually you don’t need to set this
