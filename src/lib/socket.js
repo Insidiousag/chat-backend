@@ -4,10 +4,11 @@ import express from "express";
 
 const app = express();
 const server = http.createServer(app);
+const WHITELIST = process.env.FRONTEND_ORIGINS.split(",").map((url) => url.trim());
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_ORIGINS.split(",").map((url) => url.trim()),
+    origin: WHITELIST,
     credentials: true
   },
 });
