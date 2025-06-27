@@ -51,6 +51,10 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
 
+const WHITELIST = process.env.FRONTEND_ORIGINS
+  .split(",")
+  .map((url) => url.trim());
+
 dotenv.config();
 
 const PORT = process.env.PORT || 5001;
@@ -60,7 +64,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://chat-frontend-io9e.vercel.app",
+    origin: WHITELIST,
     credentials: true,
   })
 );
@@ -89,3 +93,7 @@ app.use("/api/messages", messageRoutes);
     process.exit(1);
   }
 })();
+
+
+
+
