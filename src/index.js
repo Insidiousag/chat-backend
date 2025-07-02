@@ -91,10 +91,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 // ✅ Serve frontend from ./dist (copy from Vite build)
-app.use(express.static(path.join(__dirname, "dist")));
+// 👇 go UP one level from backend/src to backend/
+app.use(express.static(path.join(__dirname, "..", "dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
 });
 
 // ✅ Connect to DB and start server
