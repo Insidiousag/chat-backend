@@ -30,6 +30,7 @@ app.use(
       }
     },
     credentials: true, // ✅ Allow sending cookies from cross-origin
+    exposedHeaders: ["Set-Cookie"],
   })
 );
 
