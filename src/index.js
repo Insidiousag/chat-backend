@@ -60,9 +60,17 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
   cors({
-    origin: WHITELIST,
+    origin: function (origin, callback) {
+      if (!origin || WHITELIST.includes(origin)) {
+        callback(null, true); // ✅ allow the request
+      } else {
+        console.log("Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
