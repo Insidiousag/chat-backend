@@ -1,4 +1,4 @@
-// lib/utils.js
+
 import jwt from "jsonwebtoken";
 
 export const generateToken = (userId, res) => {
@@ -11,8 +11,7 @@ export const generateToken = (userId, res) => {
     httpOnly: true,
     sameSite: "none",              // <- loosen for cross-site GET/POST
     secure: true,
-    // domain: process.env.COOKIE_DOMAIN, // optionally pin to your API domain
-    // path: "/",                        // the default is "/" so usually you don’t need to set this
+    secure: process.env.NODE_ENV === "production",
   });
 
   return token;
