@@ -86,10 +86,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 // 3) Serve frontend
-app.use(express.static(path.join(__dirname, "..", "dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
-});
+// app.use(express.static(path.join(__dirname, "..", "dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
+// });
 
 (async () => {
   try {
